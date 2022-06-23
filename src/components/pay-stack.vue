@@ -203,7 +203,7 @@ onMounted(() => {
   >
     <slot>Pay with Paystack</slot>
   </button>
-  <div v-else id="embedPaymentModal"></div>
+  <div v-else id="embedPaymentModal" class="embeded-modal"></div>
 </template>
 
 <style>
@@ -212,10 +212,13 @@ onMounted(() => {
     width: 100%;
     padding: 10px;
     border: none;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 1rem;
     background-color: #011b33;
     color: #fff;
     cursor: pointer;
+}
+.embeded-modal{
+  height: 100%;
 }
 </style>

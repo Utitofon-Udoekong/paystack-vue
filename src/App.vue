@@ -9,7 +9,7 @@ const onClose = () => {
 
 <template>
     <PayStack
-    :embedInModal="true"
+    :embedInModal="false"
       :amount="200"
       :callback="callback"
       :onClose="onClose"
