@@ -1,12 +1,16 @@
+
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref, toRefs } from "vue";
+///This plugin enables accepting of payments through the paystack secure modal or an embedded form on the application. 
+import { inject, onBeforeMount, onMounted, ref, toRefs } from "vue";
 /* eslint-disable */
 // @ts-ignore
 import PaystackPop from '@paystack/inline-js';
 /* eslint-enable */
 import type { Paystackoptions } from "../interface";
 
+const key: string = inject("paystackPublicKey")
 const isScriptReady = ref(null);
+
 const props = defineProps({
   ///String: Class Name for the payment button
   paymentButtonClass: String,
@@ -105,27 +109,7 @@ const props = defineProps({
   ///String: Plan code generated from creating a plan. This makes the payment become a subscription payment.
   plan: String,
 });
-const {
-  channels,
-  paystackPublicKey,
-  email,
-  firstName,
-  lastName,
-  amount,
-  callback,
-  onClose,
-  metadata,
-  currency,
-  accessCode,
-  plan,
-  subAccount,
-  split,
-  splitCode,
-  bearer,
-  quantity,
-  transactionCharge,
-  embedInModal,
-} = toRefs(props);
+
 const dynamicSplit = () => {
   return (
     props.split.constructor === Object && Object.keys(props.split).length > 0
@@ -155,30 +139,30 @@ const generateInlineScript = (callback: any) => {
 
 const payWithPaystack = () => {
   const paystackOptions: Paystackoptions = {
-    key: paystackPublicKey.value,
-    email: email.value,
-    firstname: firstName.value,
-    lastname: lastName.value,
-    channels: channels.value,
-    amount: amount.value * 100,
-    access_code: accessCode.value,
+    key: key ?? props.paystackPublicKey,
+    email: props.email,
+    firstname: props.firstName,
+    lastname: props.lastName,
+    channels: props.channels,
+    amount: props.amount * 100,
+    access_code: props.accessCode,
     ref: "" + Math.floor(Math.random() * 1000000000 + 1),
     callback: (response: any) => {
-      callback.value(response);
+      props.callback(response);
     },
     onClose: () => {
-      onClose.value();
+      props.onClose();
     },
-    metadata: metadata.value,
-    currency: currency.value,
-    transaction_charge: dynamicSplit() ? 0 : transactionCharge.value,
-    bearer: dynamicSplit() ? "" : bearer.value,
+    metadata: props.metadata,
+    currency: props.currency,
+    transaction_charge: dynamicSplit() ? 0 : props.transactionCharge,
+    bearer: dynamicSplit() ? "" : props.bearer,
   };
-  if (embedInModal.value) {
+  if (props.embedInModal) {
     paystackOptions.container = "embedPaymentModal";
   }
   const handler = PaystackPop.setup(paystackOptions);
-  if (!embedInModal.value) {
+  if (!props.embedInModal) {
     handler.openIframe();
   }
 };
@@ -190,29 +174,35 @@ onBeforeMount(() => {
   });
 });
 onMounted(() => {
-  if (embedInModal.value) {
+  if (props.embedInModal) {
     payWithPaystack();
   }
 });
 </script>
+
 <template>
-  <button
-    v-if="!embedInModal"
+  <div class="paystack-button-container" v-if="!embedInModal">
+    <button
     @click="payWithPaystack"
     :class="paymentButtonClass ?? 'payment-button'"
   >
     <slot>Pay with Paystack</slot>
   </button>
+  </div>
   <div v-else id="embedPaymentModal"></div>
 </template>
 
 <style>
+.paystack-button-container{
+  padding: 0 200px;
+}
 .payment-button {
-    width: auto;
+  box-sizing: border-box;
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 20px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     background-color: #011b33;
     color: #fff;
     cursor: pointer;

@@ -1,6 +1,27 @@
 <script setup lang="ts">
+// import PayStack from "./components/pay-stack.vue";
+// import router from "./router";
+const callback = (response: any) => {
+  alert(response.reference);
+  // router.push(`/success/${response.reference}`);
+};
+const onClose = () => {
+  alert("Overriden on close method");
+};
 </script>
 
 <template>
-  <RouterView />
+    <PayStack
+    :embedInModal="false"
+      paystackPublicKey="pk_test_27c1ac1537f006ecefc74402138941790c586e67"
+      :amount="200"
+      :callback="callback"
+      :onClose="onClose"
+      email="eve@mail.com"
+      firstName="iwojlm;"
+      lastName="kwjnww"
+    />
+
 </template>
+<style>
+</style>
