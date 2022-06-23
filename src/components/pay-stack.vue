@@ -125,6 +125,7 @@ const props = defineProps({
   plan: String,
 });
 
+
 const dynamicSplit = () => {
   return (
     props.split.constructor === Object && Object.keys(props.split).length > 0
