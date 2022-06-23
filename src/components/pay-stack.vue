@@ -6,9 +6,27 @@ import { inject, onBeforeMount, onMounted, ref} from "vue";
 // @ts-ignore
 import PaystackPop from '@paystack/inline-js';
 /* eslint-enable */
-import type { Paystackoptions } from "../interface";
+interface Paystackoptions{
+    key: string
+    email: string
+    firstname: string
+    lastname: string
+    channels: string[] | unknown[]
+    amount: number
+    access_code: string
+    ref: string
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    callback: Function
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    onClose: Function
+    metadata: object
+    currency: string
+    transaction_charge: number
+    bearer: string
+    container?: string
+}
 
-const key: string = inject("paystackPublicKey")
+const key: string = inject("paystackPublicKey") as string
 const isScriptReady = ref(null);
 
 const props = defineProps({
@@ -40,7 +58,7 @@ const props = defineProps({
   amount: {
     type: Number,
     required: true,
-    validator(value) {
+    validator(value: number) {
       return value > 0;
     },
   },

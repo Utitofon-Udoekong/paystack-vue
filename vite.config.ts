@@ -24,18 +24,19 @@ export default defineConfig({
   build: {
     cssCodeSplit: false,
     lib: {
-      entry: "./src/PaystackPlugin.ts",
+      entry: "./src/index.ts",
       formats: ["es","cjs"],
       name: "PaystackPlugin",
       fileName: (format) => ( format === "es" ? "index.js" : "index.cjs")
     },
     rollupOptions: {
-      external: ["vue","@paystack/inline-js"],
+      external: ["vue"],
       output: {
         globals: {
           vue: "Vue"
         },
-      }
+        // exports: "named"
+      },
     }
   },
   resolve: {

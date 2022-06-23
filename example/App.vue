@@ -8,7 +8,7 @@ const onClose = () => {
 </script>
 
 <template>
-    <PayStackVue
+    <PayStack
     :embedInModal="false"
       :amount="200"
       :callback="callback"

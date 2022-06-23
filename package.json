@@ -9,9 +9,14 @@
   "browser": {
     "./styles.css": "./dist/style.css"
   },
-  "types": "./dist/PaystackPlugin.d.ts",
   "license": "Apache-2.0",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
+  "author": {
+    "name": "Utitofon Samuel",
+    "email": "utitofonudoekong0@gmail.com"
+  },
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
