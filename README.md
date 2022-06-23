@@ -87,21 +87,16 @@ Keys used in this plugin are test keys only. Do well to change them to productio
 
 ## Contributing
 
-1. Fork ithe repository
+1. Fork the repository
 2. Create your feature branch: `git checkout -b feature-name`
 3. Commit your changes: `git commit -am 'Some commit message'`
 4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request 😉😉
+5. Submit a pull request
 
-## How can I thank you?
-
-Why not star the github repo? I'd love the attention! Why not share the link for this repository on Twitter or Any Social Media? Spread the word!
-
-Don't forget to [follow me on twitter](https://twitter.com/iamraphson)!
-
-Thanks!
-Ayeni Olusegun.
+Dont forget to leave a star if you found this useful.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
+
+You can reach me on twitter at [Utitofon Udoekong](https://twitter.com/UtitofonUdoeko1)
