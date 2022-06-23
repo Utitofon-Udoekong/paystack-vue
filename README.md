@@ -30,7 +30,7 @@ npm install paystack-vue
     import { createApp } from 'vue'
 
     import App from './App.vue'
-    import PayStack from './index'
+    import PayStack from 'paystack-vue'
     const paystackKey = "pk_test_27c1ac1537f006ecefc74402138941790c586e67"
 
     const app = createApp(App)
@@ -94,9 +94,5 @@ Keys used in this plugin are test keys only. Do well to change them to productio
 5. Submit a pull request
 
 Dont forget to leave a star if you found this useful.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
 
 You can reach me on twitter at [Utitofon Udoekong](https://twitter.com/UtitofonUdoeko1)
