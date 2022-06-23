@@ -1,5 +1,5 @@
 import type { App }  from "vue";
-import PayStack from "./components/pay-stack.vue";
+import {PayStack} from "./components";
 
 export default {
      /*

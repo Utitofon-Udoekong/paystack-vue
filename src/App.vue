@@ -8,8 +8,8 @@ const onClose = () => {
 </script>
 
 <template>
-    <PayStackVue
-    :embedInModal="false"
+    <PayStack
+    :embedInModal="true"
       :amount="200"
       :callback="callback"
       :onClose="onClose"

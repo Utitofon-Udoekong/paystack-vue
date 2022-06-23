@@ -13,7 +13,7 @@ interface Paystackoptions{
     lastname: string
     channels: string[] | unknown[]
     amount: number
-    access_code: string
+    access_code: string | undefined
     ref: string
     // eslint-disable-next-line @typescript-eslint/ban-types
     callback: Function
@@ -197,21 +197,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="paystack-button-container" v-if="!embedInModal">
-    <button
+    <button v-if="!embedInModal"
     @click="payWithPaystack"
     :class="paymentButtonClass ?? 'payment-button'"
   >
     <slot>Pay with Paystack</slot>
   </button>
-  </div>
   <div v-else id="embedPaymentModal"></div>
 </template>
 
 <style>
-.paystack-button-container{
-  padding: 0 200px;
-}
 .payment-button {
   box-sizing: border-box;
     width: 100%;

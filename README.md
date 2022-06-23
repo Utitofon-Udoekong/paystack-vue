@@ -1,52 +1,107 @@
-# paystack-vue
+# VUE 3 Paystack Plugin
 
-This template should help get you started developing with Vue 3 in Vite.
+A vue 3 component for integrating the paystack payment gateway
 
-## Recommended IDE Setup
+![Preview Image](paystack-modal.png?raw=true "Preview Image")
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- [💚 Vue 3](https://v3.vuejsjs.org)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- ⚡️ Vite - Instant HMR
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- 🔥 The `<script setup>` syntax
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- 🦾 TypeScript, of course
 
-## Customize configuration
+## Installation
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### NPM
 
-## Project Setup
-
-```sh
-npm install
+```bash
+npm install paystack-vue
 ```
 
-### Compile and Hot-Reload for Development
+## USAGE
 
-```sh
-npm run dev
+#### main.ts
+
+```javascript
+    import { createApp } from 'vue'
+
+    import App from './App.vue'
+    import PayStack from './index'
+    const paystackKey = "pk_test_27c1ac1537f006ecefc74402138941790c586e67"
+
+    const app = createApp(App)
+
+    app.use(PayStack, {key: paystackKey})
+
+    app.mount('#app')
 ```
 
-### Type-Check, Compile and Minify for Production
+#### App.vue(or any component)
 
-```sh
-npm run build
+```vue
+    <script setup lang="ts">
+    const callback = (response) => {
+    alert(`Ref: ${response.reference}, status: ${response.status}`)
+    }
+    const onClose = () => {
+    alert("Payment modal closed")
+    }
+    </script>
+    <template>
+        <header>
+
+            <div class="wrapper">
+                <PayStack
+                    :embedInModal="false"
+                    :amount="200"
+                    :callback="callback"
+                    :onClose="onClose"
+                    email="eve@mail.com"
+                    firstName="firstname"
+                    lastName="lastname"
+                    paymentButtonClass="payment-button"
+                />
+            </div>
+        </header>
+    </template>
+    <style>
+    .payment-button{
+        width: 100%;
+        background-color: green;
+        border-radius: 10px
+    }
+    </style>
+
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+[Example configuration file for npm global usage](example/App.vue)
 
-```sh
-npm run test:unit
-```
+For more options checkout the [paystack documentation](https://paystack.com/docs/payments/accept-payments#popup)
 
-### Lint with [ESLint](https://eslint.org/)
+## Deployment
+Keys used in this plugin are test keys only. Do well to change them to production ready keys.
 
-```sh
-npm run lint
-```
+## Contributing
+
+1. Fork ithe repository
+2. Create your feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -am 'Some commit message'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request 😉😉
+
+## How can I thank you?
+
+Why not star the github repo? I'd love the attention! Why not share the link for this repository on Twitter or Any Social Media? Spread the word!
+
+Don't forget to [follow me on twitter](https://twitter.com/iamraphson)!
+
+Thanks!
+Ayeni Olusegun.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
