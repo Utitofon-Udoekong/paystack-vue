@@ -11,11 +11,6 @@ export interface Paystackoptions{
     onClose: Function
     metadata: object
     currency: string
-    // plan: string
-    // quantity: string
-    // subaccount: string
-    // split: object | null
-    // split_code: string
     transaction_charge: number
     bearer: string
     container?: string

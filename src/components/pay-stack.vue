@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 ///This plugin enables accepting of payments through the paystack secure modal or an embedded form on the application. 
-import { inject, onBeforeMount, onMounted, ref, toRefs } from "vue";
+import { inject, onBeforeMount, onMounted, ref} from "vue";
 /* eslint-disable */
 // @ts-ignore
 import PaystackPop from '@paystack/inline-js';
@@ -20,10 +20,7 @@ const props = defineProps({
     default: false,
   },
   ///String: Your public key from Paystack. Use test key for test mode and live key for live mode
-  paystackPublicKey: {
-    type: String,
-    required: true,
-  },
+  paystackPublicKey: String,
   ///String: Email address of the user
   email: {
     type: String,

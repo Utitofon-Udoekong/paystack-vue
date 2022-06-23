@@ -1,6 +1,15 @@
 {
   "name": "paystack-vue",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./styles.css": "./dist/style.css"
+  },
+  "browser": {
+    "./styles.css": "./dist/style.css"
+  },
+  "types": "./dist/",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -11,12 +20,12 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@paystack/inline-js": "^2.12.5",
     "pinia": "^2.0.14",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
+    "@paystack/inline-js": "^2.12.5",
     "@rushstack/eslint-patch": "^1.1.0",
     "@types/jsdom": "^16.2.14",
     "@types/node": "^16.11.41",
@@ -28,6 +37,7 @@
     "eslint-plugin-vue": "^9.0.0",
     "jsdom": "^20.0.0",
     "npm-run-all": "^4.1.5",
+    "rollup-plugin-typescript2": "^0.32.1",
     "typescript": "~4.7.4",
     "vite": "^2.9.12",
     "vitest": "^0.15.1",
