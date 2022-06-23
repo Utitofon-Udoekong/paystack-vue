@@ -30,7 +30,7 @@ export default defineConfig({
       fileName: (format) => ( format === "es" ? "index.js" : "index.cjs")
     },
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue","@paystack/inline-js"],
       output: {
         globals: {
           vue: "Vue"

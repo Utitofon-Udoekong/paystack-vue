@@ -9,7 +9,9 @@
   "browser": {
     "./styles.css": "./dist/style.css"
   },
-  "types": "./dist/",
+  "types": "./dist/PaystackPlugin.d.ts",
+  "license": "Apache-2.0",
+  "files": ["dist"],
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
