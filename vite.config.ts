@@ -24,7 +24,7 @@ export default defineConfig({
   build: {
     cssCodeSplit: false,
     lib: {
-      entry: "./src/index.ts",
+      entry: "./src/PaystackPlugin.ts",
       formats: ["es","cjs"],
       name: "PaystackPlugin",
       fileName: (format) => ( format === "es" ? "index.js" : "index.cjs")

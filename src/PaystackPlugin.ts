@@ -12,5 +12,3 @@ export default {
         app.provide("paystackPublicKey",options.key)
     }
 }
-
-export {PayStack}
