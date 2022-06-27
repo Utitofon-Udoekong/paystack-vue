@@ -93,6 +93,8 @@ Keys used in this plugin are test keys only. Do well to change them to productio
 4. Push to the branch: `git push origin feature-name`
 5. Submit a pull request
 
+You can reach me on twitter at [Utitofon Udoekong](https://twitter.com/UtitofonUdoeko1)
+
 Dont forget to leave a star if you found this useful.
 
-You can reach me on twitter at [Utitofon Udoekong](https://twitter.com/UtitofonUdoeko1)
+Special shout out to [@iamraphson](https://github.com/iamraphson)
